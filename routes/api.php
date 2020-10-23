@@ -14,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('patients', function() {
+    return response(['john doe', 'jane doe'], 200);
+});
+
+Route::get('patients/{patient}', function($patientId) {
+    return response()->json(['patientId' => "{$patientId}"], 200);
+});
+
+Route::post('patients/{patient}', function() {
+    return response()->json([
+        'message' => 'Patient created.'
+    ], 200);
+});
+
+Route::get('patients/{patient}/appts', function($patientId) {
+    return response()->json(['apptId' => "{$patientId}"], 200);
 });
