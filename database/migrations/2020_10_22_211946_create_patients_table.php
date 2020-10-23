@@ -18,8 +18,8 @@ class CreatePatientsTable extends Migration
             $table->timestamps();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('date_of_birth');
-            $table->string('phone_number');
+            $table->date('date_of_birth');
+            $table->text('phone_number');
         });
     }
 
