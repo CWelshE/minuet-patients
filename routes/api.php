@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Patient;
-use App\Models\Appointment;
+use App\Http\Controllers\PatientsController;
+use App\Http\Controllers\AppointmentsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,26 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 // GET all patients.
-Route::get('patients', function() {
-    return response(Patient::all(), 200);
-});
+Route::get('patients', [PatientsController::class, 'index']);
 
 // GET one patient.
-Route::get('patients/{patient}', function($patientId) {
-    return response(Patient::find($patientId), 200);
-});
+Route::get('patients/{patient}', [PatientsController::class, 'show']);
 
-// POST one patient.
-Route::post('patients/{patient}', function(Request $patient) {
-    return Patient::create($patient);
-});
+// POST and create one patient.
+Route::post('patients/{patient}', [PatientsController::class, 'create']);
 
-// GET one patient's appointments info.
-Route::get('patients/{patient}/appts', function($patientId) {
-    $patient = Patient::find($patientId);
-    $patientName = join(" ", [$patient->first_name, $patient->last_name]);
-    return response(Appointment::cursor()->filter(function ($appt) use ($patientName) {
-        return $appt->patient_name === $patientName;
-    }));
-});
+// PUT patient info to update.
+Route::put('patients/{patient}', [PatientsController::class, 'update']);
+
+// GET one patient's appointment(s).
+Route::get('patients/{patient}/appts', [AppointmentsController::class, 'find']);
 
