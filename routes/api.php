@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\AppointmentsController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +22,10 @@ Route::get('patients', [PatientsController::class, 'index']);
 Route::get('patients/{patient}', [PatientsController::class, 'show']);
 
 // POST and create one patient.
-Route::post('patients/{patient}', [PatientsController::class, 'create']);
+Route::post('patients', [PatientsController::class, 'create']);
 
 // PUT patient info to update.
 Route::put('patients/{patient}', [PatientsController::class, 'update']);
 
 // GET one patient's appointment(s).
 Route::get('patients/{patient}/appts', [AppointmentsController::class, 'find']);
-
