@@ -33,4 +33,10 @@ Route::post('patients/{patient}', function(Request $patient) {
 
 // GET one patient's appointments info.
 Route::get('patients/{patient}/appts', function($patientId) {
+    $patient = Patient::find($patientId);
+    $patientName = join(" ", [$patient->first_name, $patient->last_name]);
+    return response(Appointment::cursor()->filter(function ($appt) use ($patientName) {
+        return $appt->patient_name === $patientName;
+    }));
 });
+
