@@ -15,8 +15,15 @@ class PatientsController extends Controller
         return $patient;
     }
 
-    public function create(Request $patient) {
-        return Patient::create($patient);
+    public function create(Request $request) {
+        $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'date_of_birth' => 'required',
+            'phone_number' => 'required'
+        ]);
+
+        $patient = Patient::create($request->all());
         return response()->json($patient, 201);
     }
 
