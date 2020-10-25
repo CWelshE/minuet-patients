@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// Represents a single patient in a PatientsList. Presentational
-// component only.
+/**
+ * Represents a single patient in a PatientsList. Presentational
+ * component only.
+ */
 const Patient = (props) => (
-  <div className={"patient"}>
+  <div onClick={props.handleClick} className={"patient"}>
     <h3>
       {props.firstName} {props.lastName}
     </h3>

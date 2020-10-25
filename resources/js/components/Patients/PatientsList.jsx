@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Patient from "./Patient.jsx";
+import AppointmentsList from "../Appointments/AppointmentsList.jsx";
 
-// Lists all available `Patient`s. Container component.
+/**
+ * List all available `Patient`s. Container component.
+ */
 const PatientsList = () => {
   const [patients, setPatients] = useState([]);
-
-  useEffect(() => {
-    getPatients();
-  }, []);
+  const [selectedPatient, setSelected] = useState({});
 
   // Get patient data from API
   const getPatients = async () => {
@@ -16,11 +16,16 @@ const PatientsList = () => {
     setPatients(data);
   };
 
+  useEffect(() => {
+    getPatients();
+  }, []);
+
   // Map patients array to a list of Patients
   const patientItems = patients.map((patient, idx) => {
     return (
       <Patient
         key={idx}
+        handleClick={() => setSelected(patient)}
         firstName={patient["first_name"]}
         lastName={patient["last_name"]}
         dob={patient["date_of_birth"]}
@@ -31,7 +36,12 @@ const PatientsList = () => {
 
   // Flash loading text prior to fetch() completion
   const isLoading = patients.length === 0;
-  return <ul>{isLoading ? "Loading Patients.." : patientItems}</ul>;
+  return (
+    <div className="patients-list">
+      <ul>{isLoading ? "Loading Patients.." : patientItems}</ul>
+      <AppointmentsList patientId={selectedPatient["id"]} />
+    </div>
+  );
 };
 
 export default PatientsList;
