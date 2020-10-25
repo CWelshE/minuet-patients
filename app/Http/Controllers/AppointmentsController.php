@@ -12,9 +12,10 @@ class AppointmentsController extends Controller
         $patient = Patient::find($patientId);
         $patientName = join(" ", [$patient->first_name, $patient->last_name]);
 
-        return response(Appointment::cursor()->filter(
-            function ($appt) use ($patientName) {
-                return $appt->patient_name === $patientName;
-        }));
+        // Cursor was here before, but returned malformed JSON. TODO:
+        // Figure out how to rectify this query with a ::cursor->filter
+        $appts = Appointment::where('patient_name', $patientName)->get();
+
+        return response($appts, 200);
     }
 }
