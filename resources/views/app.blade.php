@@ -9,5 +9,15 @@
     <body>
         <div id="root"></div>
         <script src="{{ asset('js/app.js') }}" ></script>
+        <style>
+            body,
+            html,
+            ul,
+            div
+            #root {
+              margin: 0;
+              padding: 0;
+            }
+        </style>
     </body>
 </html>
