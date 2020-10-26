@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 /** @jsx jsx */
@@ -11,7 +10,7 @@ const patientStyles = css`
   cursor: pointer;
   background-color: ${styles.colors.primary};
   padding: 1rem;
-  border: 1px solid ${styles.colors.secondary};
+  border-bottom: 1px solid ${styles.colors.secondary};
   & h3 {
     font-size: ${styles.typography.header};
   }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Patient from "./Patient.jsx";
 import AppointmentsList from "../Appointments/AppointmentsList.jsx";
 
@@ -7,6 +7,8 @@ import { css, jsx } from "@emotion/core";
 import styles from "../../styles/constants.js";
 import "fontsource-roboto";
 
+// Styles of the container holding both patients and appointments inside
+// of their associated unordered lists
 const containerStyles = css`
   display: flex;
   flex-direction: row;
@@ -16,6 +18,7 @@ const containerStyles = css`
   align-self: center;
 `;
 
+// Styles of the unordered list of Patients
 const patientsStyles = css`
   display: flex;
   flex-direction: column;
@@ -23,10 +26,10 @@ const patientsStyles = css`
   overflow-y: scroll;
   font-family: ${styles.typography.fontFamily};
   scrollbar-width: thin;
-  border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 `;
 
+// Styles of the unordered list of Appointments
 const appointmentsStyles = css`
   flex: 2;
   overflow-y: scroll;
@@ -37,12 +40,22 @@ const appointmentsStyles = css`
   border-bottom-right-radius: 5px;
 `;
 
+const searchStyles = css`
+  background-color: ${styles.colors.secondary};
+  border: none;
+  border-top-left-radius: 5px;
+  flex-shrink: 0;
+  font-size: ${styles.typography.caption};
+  padding: 1rem;
+`;
+
 /**
  * List all available `Patient`s. Container component.
  */
 const PatientsList = () => {
   const [patients, setPatients] = useState([]);
   const [selectedPatient, setSelected] = useState({});
+  const [filterVal, setFilterVal] = useState("");
 
   // Get patient data from API
   const getPatients = async () => {
@@ -74,7 +87,19 @@ const PatientsList = () => {
   return (
     <div css={containerStyles}>
       <ul css={patientsStyles}>
-        {isLoading ? "Loading Patients.." : patientItems}
+        <input
+          type="text"
+          value={filterVal}
+          css={searchStyles}
+          onChange={(e) => setFilterVal(e.target.value)}
+        />
+        {isLoading
+          ? "Loading Patients.."
+          : patientItems.filter((e) => {
+              return (e.props.firstName + e.props.lastName)
+                .toString()
+                .includes(filterVal);
+            })}
       </ul>
       <ul css={appointmentsStyles}>
         <AppointmentsList patient={selectedPatient} />
