@@ -10,7 +10,7 @@ const patientStyles = css`
   cursor: pointer;
   background-color: ${styles.colors.primary};
   padding: 1rem;
-  border-bottom: 1px solid ${styles.colors.secondary};
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   & h3 {
     font-size: ${styles.typography.header};
   }

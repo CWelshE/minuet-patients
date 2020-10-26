@@ -14,8 +14,13 @@ const containerStyles = css`
   flex-direction: row;
   height: calc(100vh - 4rem);
   padding: 2rem;
-  width: calc(95vw - 4rem);
+  width: calc(95vw - 2rem);
   align-self: center;
+  @media (max-width: 420px) {
+    flex-direction: column;
+    padding: 0;
+    width: 100vw;
+  }
 `;
 
 // Styles of the unordered list of Patients
@@ -27,6 +32,9 @@ const patientsStyles = css`
   font-family: ${styles.typography.fontFamily};
   scrollbar-width: thin;
   border-bottom-left-radius: 5px;
+  @media (max-width: 420px) {
+    border-radius: 0;
+  }
 `;
 
 // Styles of the unordered list of Appointments
@@ -38,6 +46,9 @@ const appointmentsStyles = css`
   font-family: ${styles.typography.fontFamily};
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  @media (max-width: 420px) {
+    border-radius: 0;
+  }
 `;
 
 const searchStyles = css`

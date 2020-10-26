@@ -10,6 +10,10 @@ import "fontsource-roboto";
 const appointmentsStyles = css`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 420px) {
+    display: flex;
+    flex-direction: column;
+  }
   padding: 2rem;
   flex: 2;
   background-color: ${styles.colors.secondary};
