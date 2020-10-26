@@ -14,7 +14,7 @@ class AppointmentsController extends Controller
 
         // Cursor was here before, but returned malformed JSON. TODO:
         // Figure out how to rectify this query with a ::cursor->filter
-        $appts = Appointment::where('patient_name', $patientName)->get();
+        $appts = Appointment::where('patient_name', $patientName)->orderBy('start_date', 'desc')->get();
 
         return response($appts, 200);
     }
