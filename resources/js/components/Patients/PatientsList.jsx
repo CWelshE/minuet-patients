@@ -110,7 +110,8 @@ const PatientsList = () => {
           : patientItems.filter((e) => {
               return (e.props.firstName + e.props.lastName)
                 .toString()
-                .includes(filterVal);
+                .toLowerCase()
+                .includes(filterVal.toLowercase());
             })}
       </ul>
       <ul css={appointmentsStyles}>
