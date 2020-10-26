@@ -1,61 +1,48 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Minuet Patients Viewer
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Architecture
+This application is built with Laravel and React. Laravel tests are
+handled by its built-in facilities, while React tests are planned to be
+handled by Jest (as is typical).
 
-## About Laravel
+Laravel is primarily used as an API in this context - performing typical
+RESTful actions to view, update, and delete Patients and Appointments.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### No Redux?
+I don't think an application of this size warrants Redux. The API
+surface is simply too small; at this stage, it would likely be more work
+than it's worth. That being said, if this application were projected to
+increase in scope and overall size, it would be a good idea to implement
+Redux for decreasing confusion regarding state.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Why Emotion?
+In general, I've found that using a performant CSS-in-JS library leads
+to increased developer productivity in the long-run. It's nice to have
+all of your relevant styles included along with the React component that
+you're viewing, and perhaps even nicer to have access to transformations
+to CSS values inside of that context.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Why I didn't use Laravel Homestead
+When beginning development for this project, I was unsure whether
+Homestead would increase or decrease the overall complexity and
+development time. Thus, I opted not to use it - now, however, I think
+that I will eventually encapsulate this project into that ecosystem, in
+light of new knowledge gained as a result of developing in Laravel.
 
-## Learning Laravel
+## Running the Project
+To run the project locally, you'll need to run these commands after
+cloning the repo:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- `npm i`
+- `php artisan migrate`
+- `php artisan db:seed --class=AppointmentsSeeder`
+- `php artisan db:seed --class=PatientsSeeder`
+- `php artisan serve`
+(The seeders use Laravel Excel to parse the provided .csv files into
+Laravel's Eloquent models, and thus into the database.)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+You may need to enable `gd` and `iconv` in your `php.ini` file.
+Additionally, please provide a PostgreSQL database called
+`laravelDatabase` (or whatever you set it to in the configuration file).
+This won't be required after I move the project to Laravel Homestead,
+but hindsight is 20/20. :)
