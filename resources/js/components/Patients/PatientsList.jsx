@@ -103,6 +103,7 @@ const PatientsList = () => {
           value={filterVal}
           css={searchStyles}
           onChange={(e) => setFilterVal(e.target.value)}
+          placeholder={"Search Patients.."}
         />
         {isLoading
           ? "Loading Patients.."
