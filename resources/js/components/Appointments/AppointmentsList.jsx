@@ -10,6 +10,7 @@ import "fontsource-roboto";
 const appointmentsStyles = css`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  border-left: 3px solid rgba(0, 0, 0, 0.3);
   @media (max-width: 420px) {
     display: flex;
     flex-direction: column;
@@ -25,6 +26,9 @@ const patientHeaderStyles = css`
   flex-direction: column;
   padding: 1rem 2rem 2rem 2rem;
   color: white;
+  min-height: 144px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  border-left: 2px solid rgba(0, 0, 0, 0.3);
 
   & h2 {
     font-size: ${styles.typography.header};

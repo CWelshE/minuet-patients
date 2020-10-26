@@ -30,7 +30,7 @@ const patientsStyles = css`
   flex: 1;
   overflow-y: scroll;
   font-family: ${styles.typography.fontFamily};
-  scrollbar-width: thin;
+  scrollbar-width: none;
   border-bottom-left-radius: 5px;
   @media (max-width: 420px) {
     border-radius: 0;
