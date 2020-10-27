@@ -13,7 +13,7 @@
             /* This used to be in a `fontsource` package, but it has
                proven _quite_ difficult to get Jest to cooperate with
                Laravel's implicit config of Webpack in a timely manner,
-               so it's here for now until I've figured that out. */
+               so it's here for now. */
             @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
             body,
             html,
