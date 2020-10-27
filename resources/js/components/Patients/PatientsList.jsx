@@ -5,7 +5,6 @@ import AppointmentsList from "../Appointments/AppointmentsList.jsx";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import styles from "../../styles/constants.js";
-import "fontsource-roboto";
 
 // Styles of the container holding both patients and appointments inside
 // of their associated unordered lists
@@ -31,6 +30,9 @@ const patientsStyles = css`
   overflow-y: scroll;
   font-family: ${styles.typography.fontFamily};
   scrollbar-width: none;
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
   border-bottom-left-radius: 5px;
   @media (max-width: 420px) {
     border-radius: 0;
@@ -42,6 +44,9 @@ const appointmentsStyles = css`
   flex: 2;
   overflow-y: scroll;
   scrollbar-width: none;
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
   background-color: ${styles.colors.primary};
   font-family: ${styles.typography.fontFamily};
   border-top-right-radius: 5px;
@@ -51,6 +56,7 @@ const appointmentsStyles = css`
   }
 `;
 
+// Styles of the PatientsList filter input
 const searchStyles = css`
   background-color: ${styles.colors.secondary};
   border: none;
@@ -111,7 +117,7 @@ const PatientsList = () => {
               return (e.props.firstName + e.props.lastName)
                 .toString()
                 .toLowerCase()
-                .includes(filterVal.toLowercase());
+                .includes(filterVal.toLowerCase());
             })}
       </ul>
       <ul css={appointmentsStyles}>

@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import styles from "../../styles/constants.js";
-import "fontsource-roboto";
 
 const appointmentsStyles = css`
   display: grid;
@@ -26,7 +25,7 @@ const patientHeaderStyles = css`
   flex-direction: column;
   padding: 1rem 2rem 2rem 2rem;
   color: white;
-  min-height: 144px;
+  min-height: 149px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   border-left: 2px solid rgba(0, 0, 0, 0.3);
 
@@ -80,7 +79,7 @@ const AppointmentsList = (props) => {
       <div css={patientHeaderStyles}>
         <h2>{`${patient["first_name"]} ${patient["last_name"]}`}</h2>
         <div>
-          <span>{"DOB"}</span>
+          <span>{"Date of Birth"}</span>
           <span>{`${patient["date_of_birth"]}`}</span>
         </div>
         <div>
@@ -89,9 +88,11 @@ const AppointmentsList = (props) => {
         </div>
       </div>
     ) : (
-      <h2 css={patientHeaderStyles}>
-        {"Please select a patient to view their appointments."}
-      </h2>
+      <div css={patientHeaderStyles}>
+        <h2>
+          {"Please select a patient to view their appointments."}
+        </h2>
+      </div>
     );
   };
 

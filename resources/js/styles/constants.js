@@ -4,7 +4,7 @@ const typography = {
   headerSmall: "17px",
   body: "15px",
   caption: "14px",
-  fontFamily: "Roboto",
+  fontFamily: "Roboto Slab",
 };
 
 const colors = {
