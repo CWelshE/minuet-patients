@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders equally compared to snapshot 1`] = `
+<div>
+  <div
+    className="css-cxdqao"
+  >
+    <h2>
+      undefined undefined
+    </h2>
+    <div>
+      <span>
+        Date of Birth
+      </span>
+      <span>
+        undefined
+      </span>
+    </div>
+    <div>
+      <span>
+        Phone Number
+      </span>
+      <span>
+        undefined
+      </span>
+    </div>
+  </div>
+</div>
+`;
