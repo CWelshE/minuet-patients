@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders equally compared to snapshot 1`] = `
+<div
+  className="patient css-ssppsg-Patient"
+  onClick={[Function]}
+>
+  <h3>
+    John
+     
+    Doe
+  </h3>
+  <span>
+    Date of Birth: 
+    06-12-1985
+  </span>
+  <span>
+    Phone Number: 
+    123-456-7890
+  </span>
+</div>
+`;
