@@ -29,6 +29,18 @@ development time. Thus, I opted not to use it - now, however, I think
 that I will eventually encapsulate this project into that ecosystem, in
 light of new knowledge gained as a result of developing in Laravel.
 
+## What I'd do differently
+In general, I think I've done what I could on short notice, but here's a
+list of things I'd still like to have done:
+- Dockerize or use Homestead (see above)
+- Focus on research/implementation of asynchronous Jest and/or Enzyme
+  tests for the components that have API calls to ensure their
+  functionality is as expected (This is still something I want to learn
+  how to do reliably and in a manageable way)
+- Add more mobile styles
+- Make the UI a bit more consistent
+- Add the full gamut of RESTful API functions
+
 ## Running the Project
 To run the project locally, you'll need to run these commands after
 cloning the repo:
@@ -38,6 +50,7 @@ cloning the repo:
 - `php artisan db:seed --class=AppointmentsSeeder`
 - `php artisan db:seed --class=PatientsSeeder`
 - `php artisan serve`
+
 (The seeders use Laravel Excel to parse the provided .csv files into
 Laravel's Eloquent models, and thus into the database.)
 
