@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders equally compared to snapshot 1`] = `
+<div
+  className="appointment css-1yrphkm-Appointment"
+>
+  <h3>
+    Appointment 
+    1
+  </h3>
+  <span>
+    Date: 
+    03-24-1994
+  </span>
+  <span>
+    Time: 
+    15:30
+  </span>
+  <span>
+    Type: 
+    Vaccination
+  </span>
+</div>
+`;
